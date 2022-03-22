@@ -9,41 +9,68 @@ Mongdb configuration
 In mongodb configuration file ( mongod.conf or mongos.conf ) at the systemLog section I provided below configuration. My log file path is /var/mongodb/log/mongod.log . After below changes, do not forget to restart the mongod or mongos process once again.
 
 systemLog:
+  
   destination: file
+  
   path: /var/mongodb/log/mongod.log
+  
   logAppend: true
+  
   logRotate: reopen
 
 Now create this file below, here mongodb is linux user name.
 
 sudo nano /etc/logrotate.d/mongodb
+
 In this file make this changes
 
 /var/mongodb/log/mongod.log
+
 {
-   rotate 10
-   daily
-   dateext
-   dateformat %Y-%m-%d-%s
-   dateyesterday
-   size 10000M
-   missingok
-   create 600 mongodb mongodb
-   delaycompress
-   compress
-   sharedscripts
-   postrotate
-     /bin/kill -SIGUSR1 $(cat /var/run/mongodb.pid)
-   endscript
+
+rotate 10
+
+daily
+
+dateext
+
+dateformat %Y-%m-%d-%s
+
+dateyesterday
+
+size 10000M
+
+missingok
+
+create 600 mongodb mongodb
+
+delaycompress
+
+compress
+
+sharedscripts
+
+postrotate
+
+/bin/kill -SIGUSR1 $(cat /var/run/mongodb.pid)
+
+endscript
+
 }
+
 pid file path for MongoDB
+
 You will find this file to your data directory, in my case /data/db
 
 /data/db/mongod.lock
+
 Adding a simple file link will do the trick for me.
 
 ln -s /data/db/mongod.lock /var/run/mongodb.pid
-Now, this is linked to $(cat /var/run/mongodb.pid) of the logrotate setup file /etc/logrotate.d/mongodb which you are currently editing.
+
+Now, this is linked to $(cat /var/run/mongodb.pid) of the logrotate setup file 
+
+/etc/logrotate.d/mongodb which you are currently editing.
 
 
 
