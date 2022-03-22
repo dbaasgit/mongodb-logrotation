@@ -88,7 +88,9 @@ Now, this is linked to $(cat /var/run/mongodb.pid) of the logrotate setup file
 
 
 For reference :
+
 https://dasbotask.com/mongodb-log-rotation-automation/
+
 https://www.percona.com/blog/2018/09/27/automating-mongodb-log-rotation/
 
 
