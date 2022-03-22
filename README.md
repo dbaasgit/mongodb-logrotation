@@ -82,3 +82,13 @@ Now, this is linked to $(cat /var/run/mongodb.pid) of the logrotate setup file
 
 
 <img width="522" alt="Screenshot 2022-03-22 at 10 15 30" src="https://user-images.githubusercontent.com/75475233/159409900-377540fa-0c5e-49fa-b6a7-e3e95c7f4899.png">
+
+
+
+
+
+For reference :
+https://dasbotask.com/mongodb-log-rotation-automation/
+https://www.percona.com/blog/2018/09/27/automating-mongodb-log-rotation/
+
+
